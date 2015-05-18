@@ -1,5 +1,5 @@
 {
-  "name": "react-lazesizes",
+  "name": "react-lazysizes",
   "version": "0.1.0",
   "description": "LazySizes component base on lazysizes plugin.",
   "main": "lib/LazySizes.js",
