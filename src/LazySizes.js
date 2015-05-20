@@ -27,6 +27,18 @@ var LazySizes = React.createClass({
       console.log('Error: ', 'Prop dataSrc is required.');
     }
   },
+  componentWillUpdate: function () {
+    var lazyElement = React.findDOMNode(this.refs.lazyElement);
+    if (lazyElement.classList.contains('lazyloaded')) {
+      lazyElement.classList.remove('lazyloaded');
+    }
+  },
+  componentDidUpdate: function () {
+    var lazyElement = React.findDOMNode(this.refs.lazyElement);
+    if (!lazyElement.classList.contains('lazyload')) {
+      lazyElement.classList.add('lazyload');
+    }
+  },
   render: function () {
     var {src, dataSrc, dataSizes, dataSrcSet, className, iframe, width, height} = this.props;
     className = 'lazyload ' + className;
@@ -36,14 +48,14 @@ var LazySizes = React.createClass({
       }
       return (
         <iframe {...this.props} className={className} data-src={dataSrc}
-          width={width} height={height}></iframe>
+          width={width} height={height} ref='lazyElement'></iframe>
       );
     } else {
       dataSrc = (isEmpty(dataSrc) && isEmpty(dataSrcSet)) ? src : dataSrc;
       return (
         <img {...this.props} className={className} src={src} data-src={dataSrc}
           data-sizes={dataSizes} data-srcset={dataSrcSet} width={width}
-          height={height}></img>
+          height={height} ref='lazyElement'></img>
       );
     }
   }
