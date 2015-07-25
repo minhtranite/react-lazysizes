@@ -29,9 +29,16 @@ var App = React.createClass({
               dataSrc='http://lorempixel.com/600/600/sports/4'
               className='img-responsive'/>
             <hr/>
+            <LazySizes width='600' height='600'
+              src='http://lorempixel.com/600/600/sports/6'
+              className='img-responsive'/>
+            <hr/>
             <LazySizes width='940' height='500'
               dataSrcSet='https://farm9.staticflickr.com/8200/8248153196_7a7664e147_m.jpg 240w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147_n.jpg 320w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147.jpg 500w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147_c.jpg 800w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147_b.jpg 1024w'
               className='img-responsive'/>
+            <hr/>
+            <LazySizes src='//www.youtube.com/embed/ZfV-aYdU4uE'
+              iframe={true} frameBorder={0} width='650' height='480'/>
           </div>
         </main>
         <Footer/>

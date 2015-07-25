@@ -25,8 +25,7 @@
     "react": "0.13.x"
   },
   "dependencies": {
-    "lazysizes": "^1.1.2",
-    "lodash.isempty": "^3.0.3"
+    "lazysizes": "^1.1.4"
   },
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",

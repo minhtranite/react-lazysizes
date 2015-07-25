@@ -1,64 +1,59 @@
-var React = require('react');
-var isEmpty = require('lodash.isempty');
+import React from 'react';
 
 require('lazysizes');
 
-var LazySizes = React.createClass({
-  propTypes: {
+class LazySizes extends React.Component {
+  static propTypes = {
     src: React.PropTypes.string,
-    dataSrc: React.PropTypes.string,
     dataSizes: React.PropTypes.string,
+    dataSrc: React.PropTypes.string,
     dataSrcSet: React.PropTypes.string,
     className: React.PropTypes.string,
     iframe: React.PropTypes.bool,
     width: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]).isRequired,
     height: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]).isRequired
-  },
-  getDefaultProps: function () {
-    return {
-      src: 'data:image/gif;base64,R0lGODdhEAAJAIAAAMLCwsLCwiwAAAAAEAAJAAACCoSPqcvtD6OclBUAOw==',
-      dataSizes: 'auto',
-      className: '',
-      iframe: false
-    };
-  },
-  componentWillMount: function () {
-    if (this.props.iframe && isEmpty(this.props.dataSrc)) {
-      console.log('Error: ', 'Prop dataSrc is required.');
+  };
+  static defaultProps = {
+    src: 'data:image/gif;base64,R0lGODdhEAAJAIAAAMLCwsLCwiwAAAAAEAAJAAACCoSPqcvtD6OclBUAOw==',
+    dataSizes: 'auto',
+    className: '',
+    iframe: false
+  };
+  componentWillMount = () => {
+    if (this.props.iframe && !this.props.dataSrc) {
+      console.log('Warning: Prop dataSrc is required on iframe.');
     }
-  },
-  componentWillUpdate: function () {
-    var lazyElement = React.findDOMNode(this.refs.lazyElement);
+  };
+  componentWillUpdate = () => {
+    let lazyElement = React.findDOMNode(this.refs.lazyElement);
     if (lazyElement.classList.contains('lazyloaded')) {
       lazyElement.classList.remove('lazyloaded');
     }
-  },
-  componentDidUpdate: function () {
-    var lazyElement = React.findDOMNode(this.refs.lazyElement);
+  };
+  componentDidUpdate = () => {
+    let lazyElement = React.findDOMNode(this.refs.lazyElement);
     if (!lazyElement.classList.contains('lazyload')) {
       lazyElement.classList.add('lazyload');
     }
-  },
-  render: function () {
-    var {src, dataSrc, dataSizes, dataSrcSet, className, iframe, width, height} = this.props;
-    className = 'lazyload ' + className;
+  };
+
+  render() {
+    let {src, dataSizes, dataSrc, dataSrcSet, className, iframe, width, height} = this.props;
     if (iframe) {
-      if (isEmpty(dataSrc)) {
-        return null;
-      }
       return (
-        <iframe {...this.props} className={className} data-src={dataSrc}
-          width={width} height={height} ref='lazyElement'></iframe>
+        <iframe {...this.props} src={dataSrc ? '' : src} data-src={dataSrc}
+          width={width} height={height} className={'lazyload ' + className}
+          ref='lazyElement'></iframe>
       );
     } else {
-      dataSrc = (isEmpty(dataSrc) && isEmpty(dataSrcSet)) ? src : dataSrc;
       return (
-        <img {...this.props} className={className} src={src} data-src={dataSrc}
+        <img {...this.props} src={src} data-src={dataSrc}
           data-sizes={dataSizes} data-srcset={dataSrcSet} width={width}
-          height={height} ref='lazyElement'></img>
+          height={height} className={'lazyload ' + className}
+          ref='lazyElement'></img>
       );
     }
   }
-});
+}
 
-module.exports = LazySizes;
+export default LazySizes;
