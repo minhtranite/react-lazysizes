@@ -37,7 +37,7 @@ var App = React.createClass({
               dataSrcSet='https://farm9.staticflickr.com/8200/8248153196_7a7664e147_m.jpg 240w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147_n.jpg 320w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147.jpg 500w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147_c.jpg 800w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147_b.jpg 1024w'
               className='img-responsive'/>
             <hr/>
-            <LazySizes src='//www.youtube.com/embed/ZfV-aYdU4uE'
+            <LazySizes datSrc='//www.youtube.com/embed/ZfV-aYdU4uE'
               iframe={true} frameBorder={0} width='650' height='480'/>
           </div>
         </main>
