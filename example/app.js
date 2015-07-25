@@ -1,11 +1,10 @@
 var React = require('react');
-
-require('./bower_components/bootstrap-customize/css/bootstrap.css');
-require('./assets/styles/app.scss');
-
 var Header = require('./components/Header');
 var Footer = require('./components/Footer');
 var LazySizes = require('../src/LazySizes');
+
+require('./bower_components/bootstrap-customize/css/bootstrap.css');
+require('./assets/styles/app.scss');
 
 var App = React.createClass({
   render: function () {
