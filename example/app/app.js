@@ -1,18 +1,20 @@
-var React = require('react');
-var Header = require('./components/Header');
-var Footer = require('./components/Footer');
-var LazySizes = require('../src/LazySizes');
+import 'babel-core/polyfill';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Header from './components/Header.js';
+import Footer from './components/Footer.js';
+import LazySizes from 'react-lazysizes';
 
-require('./bower_components/bootstrap-customize/css/bootstrap.css');
-require('./assets/styles/app.scss');
+import './bower_components/bootstrap-customize/css/bootstrap.css';
+import './assets/styles/app.scss';
 
-var App = React.createClass({
-  render: function () {
+class App extends React.Component {
+  render() {
     return (
-      <div className={"layout-page"}>
+      <div className='layout-page'>
         <Header/>
-        <main className={"layout-main"}>
-          <div className={"container"}>
+        <main className='layout-main'>
+          <div className='container'>
             <LazySizes width='1920' height='1024'
               dataSrc='http://lorempixel.com/1920/1024/sports/1'
               className='img-responsive'/>
@@ -37,7 +39,7 @@ var App = React.createClass({
               dataSrcSet='https://farm9.staticflickr.com/8200/8248153196_7a7664e147_m.jpg 240w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147_n.jpg 320w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147.jpg 500w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147_c.jpg 800w,https://farm9.staticflickr.com/8200/8248153196_7a7664e147_b.jpg 1024w'
               className='img-responsive'/>
             <hr/>
-            <LazySizes datSrc='//www.youtube.com/embed/ZfV-aYdU4uE'
+            <LazySizes dataSrc='//www.youtube.com/embed/ZfV-aYdU4uE'
               iframe={true} frameBorder={0} width='650' height='480'/>
           </div>
         </main>
@@ -45,7 +47,14 @@ var App = React.createClass({
       </div>
     );
   }
-});
+}
 
-React.render(<App />, document.body);
+function run() {
+  ReactDOM.render(<App />, document.getElementById('app'));
+}
 
+if (window.addEventListener) {
+  window.addEventListener('DOMContentLoaded', run);
+} else {
+  window.attachEvent('onload', run);
+}

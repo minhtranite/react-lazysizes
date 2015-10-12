@@ -1,8 +1,8 @@
 {
   "name": "react-lazysizes",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "LazySizes component base on lazysizes plugin.",
-  "main": "lib/LazySizes.js",
+  "main": "lib/index.js",
   "keywords": [
     "react-component",
     "react",
@@ -20,6 +20,7 @@
     "test",
     "tests"
   ],
+  "dependencies": {},
   "devDependencies": {
     "bootstrap-customize": "~3.3.4"
   }

@@ -1,6 +1,6 @@
+import 'lazysizes';
 import React from 'react';
-
-require('lazysizes');
+import Invariant from 'invariant';
 
 class LazySizes extends React.Component {
   static propTypes = {
@@ -21,7 +21,7 @@ class LazySizes extends React.Component {
   };
   componentWillMount = () => {
     if (this.props.iframe && !this.props.dataSrc) {
-      console.log('Warning: Prop dataSrc is required on iframe.');
+      Invariant(false, 'Prop dataSrc is required on iframe.');
     }
   };
   componentWillUpdate = () => {
@@ -45,14 +45,13 @@ class LazySizes extends React.Component {
           width={width} height={height} className={'lazyload ' + className}
           ref='lazyElement'></iframe>
       );
-    } else {
-      return (
-        <img {...this.props} src={src} data-src={dataSrc}
-          data-sizes={dataSizes} data-srcset={dataSrcSet} width={width}
-          height={height} className={'lazyload ' + className}
-          ref='lazyElement'></img>
-      );
     }
+    return (
+      <img {...this.props} src={src} data-src={dataSrc}
+        data-sizes={dataSizes} data-srcset={dataSrcSet} width={width}
+        height={height} className={'lazyload ' + className}
+        ref='lazyElement'></img>
+    );
   }
 }
 
