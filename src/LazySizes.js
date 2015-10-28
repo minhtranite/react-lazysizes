@@ -26,13 +26,13 @@ class LazySizes extends React.Component {
     }
   };
   componentWillUpdate = () => {
-    let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement);
+    let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement));
     if (lazyElement.classList.contains('lazyloaded')) {
       lazyElement.classList.remove('lazyloaded');
     }
   };
   componentDidUpdate = () => {
-    let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement);
+    let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement));
     if (!lazyElement.classList.contains('lazyload')) {
       lazyElement.classList.add('lazyload');
     }
@@ -51,7 +51,7 @@ class LazySizes extends React.Component {
       <img {...this.props} src={src} data-src={dataSrc}
         data-sizes={dataSizes} data-srcset={dataSrcSet} width={width}
         height={height} className={'lazyload ' + className}
-        ref='lazyElement'></img>
+        ref='lazyElement'/>
     );
   }
 }
