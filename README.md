@@ -31,7 +31,7 @@ var LazySizes = require('react-lazysizes');
 ### UMD
 
 ```html
-<script src="path/to/react-progress-bar-plus/dist/react-lazysizes.js"></script>
+<script src="path/to/react-lazysizes/dist/react-lazysizes.js"></script>
 ```
 
 ```js
