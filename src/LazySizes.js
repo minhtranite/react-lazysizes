@@ -1,5 +1,6 @@
 import 'lazysizes';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Invariant from 'invariant';
 
 class LazySizes extends React.Component {
@@ -25,13 +26,13 @@ class LazySizes extends React.Component {
     }
   };
   componentWillUpdate = () => {
-    let lazyElement = React.findDOMNode(this.refs.lazyElement);
+    let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement);
     if (lazyElement.classList.contains('lazyloaded')) {
       lazyElement.classList.remove('lazyloaded');
     }
   };
   componentDidUpdate = () => {
-    let lazyElement = React.findDOMNode(this.refs.lazyElement);
+    let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement);
     if (!lazyElement.classList.contains('lazyload')) {
       lazyElement.classList.add('lazyload');
     }
