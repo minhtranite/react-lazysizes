@@ -2,19 +2,45 @@
 
 LazySizes component for ReactJS base on [lazysizes](https://github.com/aFarkas/lazysizes)
 
+**Note:** If you're still using React 0.13, please continue to use `react-lazysizes@0.2.x`.
+
 ## Installation
+
+### NPM
 
 ```bash
 npm install --save react-lazysizes
 ```
 
+### Bower
+
+```bash
+bower install --save react-lazysizes
+```
+
 ## Usage
+
+### JS
 
 ```js
 var LazySizes = require('react-lazysizes');
 
 <LazySizes width='1920' height='1024' dataSrc='http://lorempixel.com/1920/1024/sports/1'/>
 ```
+
+### UMD
+
+```html
+<script src="path/to/react-progress-bar-plus/dist/react-lazysizes.js"></script>
+```
+
+```js
+...
+var LazySizes = window.ReactLazysizes;
+...
+```
+
+Example [here](http://codepen.io/vn38minhtran/pen/YyLZLe/)
 
 ## Props
 
