@@ -25,15 +25,24 @@ class LazySizes extends React.Component {
       Invariant(false, 'Prop dataSrc is required on iframe.');
     }
   };
-  componentWillUpdate = () => {
-    let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement));
-    if (lazyElement.classList.contains('lazyloaded')) {
-      lazyElement.classList.remove('lazyloaded');
+  componentWillUpdate = (nextProps) => {
+    let propsChanged = false;
+    for (let propName of ['src', 'dataSizes', 'dataSrc', 'dataSrcSet', 'className', 'iframe', 'width', 'height']) {
+      if (this.props[propName] !== nextProps[propName]) {
+        propsChanged = true;
+        break;
+      }
+    }
+    if (propsChanged) {
+      let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement));
+      if (lazyElement.classList.contains('lazyloaded')) {
+        lazyElement.classList.remove('lazyloaded');
+      }
     }
   };
   componentDidUpdate = () => {
     let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement));
-    if (!lazyElement.classList.contains('lazyload')) {
+    if (!lazyElement.classList.contains('lazyloaded') && !lazyElement.classList.contains('lazyload')) {
       lazyElement.classList.add('lazyload');
     }
   };
