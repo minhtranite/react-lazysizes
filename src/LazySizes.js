@@ -1,7 +1,10 @@
-import 'lazysizes';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Invariant from 'invariant';
+
+if (process.env.BROWSER) {
+  require('lazysizes');
+}
 
 class LazySizes extends React.Component {
   static propTypes = {
