@@ -1,4 +1,4 @@
- var webpack = require('webpack');
+var webpack = require('webpack');
 var path = require('path');
 var pkg = require('./package.json');
 var camelCase = require('camelcase');
