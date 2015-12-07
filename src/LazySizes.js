@@ -1,7 +1,16 @@
-import 'lazysizes';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Invariant from 'invariant';
+
+const canUseDOM = !!(
+  typeof window !== 'undefined' &&
+  window.document &&
+  window.document.createElement
+);
+
+if (canUseDOM) {
+  require('lazysizes');
+}
 
 class LazySizes extends React.Component {
   static propTypes = {
