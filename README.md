@@ -35,9 +35,9 @@ var LazySizes = require('react-lazysizes');
 ```
 
 ```js
-...
+//...
 var LazySizes = window.ReactLazysizes;
-...
+//...
 ```
 
 Example [here](http://codepen.io/vn38minhtran/pen/YyLZLe/)
@@ -49,7 +49,7 @@ Example [here](http://codepen.io/vn38minhtran/pen/YyLZLe/)
 | src | string | 'data:image/gif;base64,R0lGODdhEAAJAIAAAMLCwsLCwiwAAAAAEAAJAAACCoSPqcvtD6OclBUAOw==' |
 | dataSrc | string | |
 | dataSizes | string | 'auto' |
-| dataSrcSet | string |  |
+| dataSrcSet | [string, object, array] |  |
 | className | string | '' |
 | iframe | bool | false |
 | width | string or number | |
