@@ -6,11 +6,11 @@ class PageExample2 extends React.Component {
   render() {
     let srcSet1 = 'https://farm9.staticflickr.com/8200/8248153196_7a7664e147_m.jpg 240w, https://farm9.staticflickr.com/8200/8248153196_7a7664e147_n.jpg 320w, https://farm9.staticflickr.com/8200/8248153196_7a7664e147.jpg 500w, https://farm9.staticflickr.com/8200/8248153196_7a7664e147_c.jpg 800w, https://farm9.staticflickr.com/8200/8248153196_7a7664e147_b.jpg 1024w';
     let srcSet2 = {
-      'https://farm9.staticflickr.com/8200/8248153196_7a7664e147_m.jpg': '240w',
-      'https://farm9.staticflickr.com/8200/8248153196_7a7664e147_n.jpg': '320w',
-      'https://farm9.staticflickr.com/8200/8248153196_7a7664e147.jpg': '500w',
-      'https://farm9.staticflickr.com/8200/8248153196_7a7664e147_c.jpg': '800w',
-      'https://farm9.staticflickr.com/8200/8248153196_7a7664e147_b.jpg': '1024w'
+      '240w': 'https://farm9.staticflickr.com/8200/8248153196_7a7664e147_m.jpg',
+      '320w': 'https://farm9.staticflickr.com/8200/8248153196_7a7664e147_n.jpg',
+      '500w': 'https://farm9.staticflickr.com/8200/8248153196_7a7664e147.jpg',
+      '800w': 'https://farm9.staticflickr.com/8200/8248153196_7a7664e147_c.jpg',
+      '1024w': 'https://farm9.staticflickr.com/8200/8248153196_7a7664e147_b.jpg'
     };
     let srcSet3 = [
       {

@@ -67,10 +67,10 @@ class LazySizes extends React.Component {
     if (typeof srcSet === 'object') {
       if (!Array.isArray(srcSet)) {
         result = [];
-        for (let item in srcSet) {
+        for (let variant in srcSet) {
           result.push({
-            src: item,
-            variant: srcSet[item]
+            variant: variant,
+            src: srcSet[variant]
           });
         }
       }
