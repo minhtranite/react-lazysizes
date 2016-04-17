@@ -35,7 +35,8 @@ class ResponsivePage extends React.Component {
       }
     ];
     return (
-      <Document title="Example2 | React lazysizes" className="page-ex-2">
+      <Document title="Responsive | React lazysizes"
+        className="page-responsive">
         <div>
           <div className="alert alert-danger" role="alert">
             For responsive images support you must use either use a full

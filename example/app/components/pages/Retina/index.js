@@ -6,7 +6,7 @@ class RetinaPage extends React.Component {
   render() {
     let categories = ['abstract', 'animals', 'business', 'cats', 'city', 'food', 'nightlife', 'fashion', 'people', 'nature', 'sports', 'transport'];
     return (
-      <Document title="Example1 | React lazysizes" className="page-ex-1">
+      <Document title="Retina | React lazysizes" className="page-retina">
         <div>
           {categories.map(category => {
             return (
