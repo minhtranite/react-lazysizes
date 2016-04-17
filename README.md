@@ -2,8 +2,6 @@
 
 LazySizes component for ReactJS base on [lazysizes](https://github.com/aFarkas/lazysizes)
 
-**Note:** If you're still using React 0.13, please continue to use `react-lazysizes@0.2.x`.
-
 ## Installation
 
 ### NPM
@@ -52,8 +50,6 @@ Example [here](http://codepen.io/vn38minhtran/pen/YyLZLe/)
 | dataSrcSet | [string, object, array] |  |
 | className | string | '' |
 | iframe | bool | false |
-| width | string or number | |
-| height | string or number |  |
 
 More info see [lazysizes](https://github.com/aFarkas/lazysizes) api.
 

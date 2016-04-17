@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Invariant from 'invariant';
+import invariant from 'invariant';
+import classnames from 'classnames';
 
 const canUseDOM = !!(
   typeof window !== 'undefined' &&
@@ -8,8 +9,10 @@ const canUseDOM = !!(
   window.document.createElement
 );
 
+let lazySizes = null;
+
 if (canUseDOM) {
-  require('lazysizes');
+  lazySizes = require('lazysizes');
 }
 
 class LazySizes extends React.Component {
@@ -19,27 +22,25 @@ class LazySizes extends React.Component {
     dataSrc: React.PropTypes.string,
     dataSrcSet: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object, React.PropTypes.array]),
     className: React.PropTypes.string,
-    iframe: React.PropTypes.bool,
-    width: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]).isRequired,
-    height: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]).isRequired
+    iframe: React.PropTypes.bool
   };
 
   static defaultProps = {
     src: 'data:image/gif;base64,R0lGODdhEAAJAIAAAMLCwsLCwiwAAAAAEAAJAAACCoSPqcvtD6OclBUAOw==',
     dataSizes: 'auto',
-    className: '',
     iframe: false
   };
 
   componentWillMount = () => {
-    if (this.props.iframe && !this.props.dataSrc) {
-      Invariant(false, 'Prop dataSrc is required on iframe.');
+    let {iframe, dataSrc} = this.props;
+    if (iframe && !dataSrc) {
+      invariant(false, 'Prop dataSrc is required on iframe.');
     }
   };
 
   componentWillUpdate = (nextProps) => {
     let propsChanged = false;
-    for (let propName of ['src', 'dataSizes', 'dataSrc', 'dataSrcSet', 'className', 'iframe', 'width', 'height']) {
+    for (let propName of ['src', 'dataSizes', 'dataSrc', 'dataSrcSet', 'className', 'iframe']) {
       let prop = propName === 'dataSrcSet' ? this.handleSrcSet(this.props[propName]) : this.props[propName];
       let nextProp = propName === 'dataSrcSet' ? this.handleSrcSet(nextProps[propName]) : nextProps[propName];
       if (prop !== nextProp) {
@@ -47,18 +48,21 @@ class LazySizes extends React.Component {
         break;
       }
     }
-    if (propsChanged) {
-      let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement));
-      if (lazyElement.classList.contains('lazyloaded')) {
-        lazyElement.classList.remove('lazyloaded');
+    if (propsChanged && lazySizes) {
+      let lazyElement = ReactDOM.findDOMNode(this);
+      if (lazySizes.hC(lazyElement, 'lazyloaded')) {
+        lazySizes.rC(lazyElement, 'lazyloaded');
       }
     }
   };
 
   componentDidUpdate = () => {
-    let lazyElement = ReactDOM.findDOMNode((this.refs.lazyElement));
-    if (!lazyElement.classList.contains('lazyloaded') && !lazyElement.classList.contains('lazyload')) {
-      lazyElement.classList.add('lazyload');
+    if (!lazySizes) {
+      return;
+    }
+    let lazyElement = ReactDOM.findDOMNode(this);
+    if (!lazySizes.hC(lazyElement, 'lazyloaded') && !lazySizes.hC(lazyElement, 'lazyload')) {
+      lazySizes.aC(lazyElement, 'lazyload');
     }
   };
 
@@ -68,10 +72,12 @@ class LazySizes extends React.Component {
       if (!Array.isArray(srcSet)) {
         result = [];
         for (let variant in srcSet) {
-          result.push({
-            variant: variant,
-            src: srcSet[variant]
-          });
+          if (srcSet.hasOwnProperty(variant)) {
+            result.push({
+              variant: variant,
+              src: srcSet[variant]
+            });
+          }
         }
       }
       result = result.map(item => {
@@ -82,27 +88,24 @@ class LazySizes extends React.Component {
   };
 
   render() {
-    let {src, dataSizes, dataSrc, dataSrcSet, className, iframe, width, height} = this.props;
+    let {src, dataSizes, dataSrc, dataSrcSet, className, iframe, ...other} = this.props;
     dataSrcSet = this.handleSrcSet(dataSrcSet);
+    className = classnames(['lazyload', className]).trim();
     if (iframe) {
       return (
-        <iframe {...this.props} src={dataSrc ? '' : src}
+        <iframe {...other}
+          src={dataSrc ? '' : src}
           data-src={dataSrc}
-          width={width}
-          height={height}
-          className={'lazyload ' + className}
-          ref='lazyElement'></iframe>
+          className={className}></iframe>
       );
     }
     return (
-      <img {...this.props} src={src}
+      <img {...other}
+        src={src}
         data-src={dataSrc}
         data-sizes={dataSizes}
         data-srcset={dataSrcSet}
-        width={width}
-        height={height}
-        className={'lazyload ' + className}
-        ref='lazyElement'/>
+        className={className}/>
     );
   }
 }

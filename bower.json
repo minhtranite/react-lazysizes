@@ -1,6 +1,6 @@
 {
   "name": "react-lazysizes",
-  "version": "0.4.1",
+  "version": "1.0.0",
   "description": "LazySizes component base on lazysizes plugin.",
   "main": "dist/react-lazysizes.js",
   "keywords": [
@@ -21,7 +21,5 @@
     "tests"
   ],
   "dependencies": {},
-  "devDependencies": {
-    "bootstrap-customize": "~3.3.4"
-  }
+  "devDependencies": {}
 }
