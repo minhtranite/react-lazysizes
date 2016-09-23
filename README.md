@@ -55,5 +55,5 @@ More info see [lazysizes](https://github.com/aFarkas/lazysizes) api.
 
 ## Example
 
-View [demo](http://vn38minhtran.github.io/react-lazysizes) or example folder.
+View [demo](http://minhtranite.github.io/react-lazysizes) or example folder.
 
