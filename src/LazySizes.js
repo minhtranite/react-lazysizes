@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import invariant from 'invariant';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 const canUseDOM = !!(
   typeof window !== 'undefined' &&
@@ -17,12 +18,12 @@ if (canUseDOM) {
 
 class LazySizes extends React.Component {
   static propTypes = {
-    src: React.PropTypes.string,
-    dataSizes: React.PropTypes.string,
-    dataSrc: React.PropTypes.string,
-    dataSrcSet: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object, React.PropTypes.array]),
-    className: React.PropTypes.string,
-    iframe: React.PropTypes.bool
+    src: PropTypes.string,
+    dataSizes: PropTypes.string,
+    dataSrc: PropTypes.string,
+    dataSrcSet: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.array]),
+    className: PropTypes.string,
+    iframe: PropTypes.bool
   };
 
   static defaultProps = {
